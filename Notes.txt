@@ -1,0 +1,143 @@
+1. What is Flutter?
+   Flutter is a tool that allows you to build native cross platform(iOS, Android) apps with one programming language and codebase.
+   A SDK (Software developement Kit) Tools to compile your code to native machine code + develop with ease
+   A Framework/ Widget Library: Reusable UI building blocks(widgets), utility functions, packages.
+   Flutter uses a programming language called dart focused on building front-end user interface front-end apps. It is object oriented and strongly types. Syntax is like a mixture of Javascript, Java, C#.
+   Flutter builds up on dart. It's a framework for dart and dart is actually a programming language.
+
+2. Flutter Architecture?
+   flutter has idea of creating a User interface as a code widget tree on flutter app.
+   It embrace platform difference although with one codebase which means we could have different code or UI for different platform.
+   Flutter everthing is widgets. 
+   Your APP's UI is a widget Tree!
+   UI as code: No Drag and Drop, No visual Editor, Code only, Exremely straightforward
+   One Codebase: 
+
+3. How Fluttter & Dart Code Gets complied to Native apps
+   Dart Code uses a flutter framework and our own widget/code. Flutter compile the dart code to native code for these different platform with Flutter SDK. 
+   Flutter gives high performance application.
+   Flutter doesn't use platform primitives.
+   Flutter directly control every pixels on the screen. Flutter doesn't compile your code to some native equivalance or native alternative, instead Flutter ships with its own engine which control the entire screen. It give flutter more control less platform limitation.
+
+4. Flutter window development environment:
+   R, 
+   Shift+R
+5. Material Design Framework
+   Material is a design created and heavily used by google.
+   It's not google's style for everyone. It is indeed highly customizable( and work on ios devices too) Material design is built into flutter but you also find apple styled widgets
+   ISO style with cupertino Widgets.
+
+6. Flutter vs React Native vs Ionic
+
+7. An overview of the generated files and folders
+   .idea => configuration for android studio no need to work with it.
+   android => It holds a complete android project this is the project the flutter sdk will use when it is compiled. Compiled flutter code. Passive folder used by the flutter no need to work with it. 
+   build => output of the flutter application manage by the flutter sdk. passive folder
+   ios => passive folder manage by sdk to get ios for developing and testing
+   lib => Floder where we will work where we will add dart code.
+   test => allow use to write test code
+   pubspec.yml => allows us to manage the dependencise of our project. We can configure third party packages we might be using. We can configure fonts and image that we want to use. 
+
+8. Dart basic
+   main function is the first function which will execute automatically when app launches. Add semicolon after each expression. 
+   Text, Number->int, double
+   type inference is avaliable in dart.
+   Dart is object oriented programming languge.
+   Everything in dart is a object.
+   Variable inside the class is called a properties.
+
+9. Building a app from scratch
+   On screen we see a widget. Flutter is about widget. All flutter is a bunch of widget. Widget are the buch of UI block. Widget often contain other widget( widget tree).
+   We need to extend from a base class which means that it build up on a base class gets all the feature of that base class and only add new feature to it.
+   material.dart file has a base class which allow us to create own widgets that the stateless widgets class. 
+   build method is what dart and flutter will call in the end when they try to draw something onto the screen so build method needs to return a widgets.
+   MaterialApp widget  a widget provided by the flutter team which does some base setup to turn our combination of widget into a real app that can be rendered. 
+   MaterialApp uses a named argument which means we don't pass data in order but because that has a lot of possible argument we can set we target an argument by its name 
+
+10. Running the App on a Emulator
+    runApp() exposed from material.dart package. It runs our flutter app once andorid app is booted up. It takes our widget tree and draw something onto the screen that's based on that tree. It calls the build method in our widget because every widget in the flutter needs to extend stateless widget or stateful widget one of two widget class and each of the class force to add a build method because in the end, flutter will always call that build method for us when it is prompted to draw something on the screen. 
+    flutter provide the value for the context which will be object of buildcontext. 
+    Every widget are the dart class every widget are just a dart class which have a build method. 
+    @override -> decoretor provided by dart. It make sure we are deliberately overiding a method. 
+
+11. Class Constructor & Named argument
+    Constructor runs only once we create a new object based on a class which happens when we call a class.
+    class Person{
+      String? name;
+      int? age;
+      Person(String inputName, int age){
+         name = inputName;
+         this.age = age;
+   }
+   name argument: Person({String inputName, int age})
+   perons({this.name, this.age});
+   @required to make the argument a required one.
+}
+12. Building a Widget Tree
+    Scaffold is a widget baked into material.dart. It has job of creating a base page design for our app. It will give us a basic design and structure and color schema or coloring  for giving a UI that looks like a regular mobile app.
+
+13. Visible(Input_output) & Invisible(Layout_Control)
+    Different type of widgets:
+    Output and input visible Widget: Example: RaisedButton(),Text(),Card(). Drawn onto the screen: "What the user sees
+    Layout & Control(Invisible Widget): It helps us with layout and with controlling how our widget tree behaves and how it looks like and there we got things like row, column, ListView etc. It helps us with structuring the content. 
+    Container Widget: It is by default invisible but we can give it some styling so that we can see it.
+
+14. Adding Layout Widgets
+15. Connecting Function & Button
+    onPress takes a function. 
+16. Anonymous Function:
+17. Updating correctly with stateful widgets
+    Understanding state:
+    State is data and information used by your app. 
+    App state: Authentication user, loaded jobs,......
+    widget state: current user state, Is loading spinner being shown?
+    StatelessWidget can't have state. In our flutter application we can have more than one widget, some widget are only to output something which are concerned with outputting data with certain styles, certain colors or in a certian structure. Some widget need to change the data so we can convert stateless widget to stateful widgets. 
+    Stateless vs stateful widget
+    stateless:
+      In stateless widget we have our widget adn the build method which is used to render the UI. We can pass in data from outside into the stateless widget throught the constructor of that class. This data can change and actually flutter would rebuild that widget when that external data changes but inside the widget the data will never change. We can only recive new data from outside and that will basically rebuild the widget. 
+   Stateful: 
+      The stateful method has also the build method that builds a widgets and that renders the UI, but here we can also get our input data, so data passed in through the constructor of the widget class and also have some internal state so the widget will get rerender so the user interface will get updated by flutter whenever either the external or input data change or interal data change. 
+   State is the generic class. 
+   We have two class because statefulWidget can be recreated when external data changes. State is persistent, it isn't recreated. 
+
+18. Brief Look under the hood
+    setState is a function that forces flutter to rerender user interface not the entire user interface of the app. setState calls build again of the widget that call that setState and build method rebuild the widget tree. It doesn't re render the entire UI again, it does not redraw every pixel it find out what changed on the screen and what need to be redrawn.
+
+19. Using Private properties
+    In Dart we can manage what can be imported and cannot be.
+    _ is a syntax that turns the class into a private class. 
+20. Creating a new, custom widgets
+    It helps in performance cause it helps to make rebuild more efficient and easier to manage the code. 
+21. First Styling and layouting setup
+    enum: A list of predefined value. 
+    container widget is a special widget which have a buch of setting that allows you to space things and to align things. The core of the container is the child.It have child, padding, border and margin.
+
+22. Enums & Multiple Constructor
+    We could have multiple constructor to allow to create an object in different variants. 
+    const EdgeInsets.all(double value)
+    In this way we could define multiple constructor per class. so we can create a new instance of the class but with different configuration with different settings to create different instance with different configuration. 
+23. Passing callback function around
+    Lifting the state up: We manage the state on the shared, on the common denominator of different widgets that need this state and this is the direct parent of these widgets that need the state.
+    The function address we're passing around is also known as a callback because the receiving widget calls it in the future. 
+24. Introducing Map
+    key value pair
+25. final and const
+    final => If a value doesn't change from the point of time when your program runs. It can be initialized with the value. It is runtime constant value. 
+    const => It is compile time constant not runtime constant. We can add const infront of the value. If const is infront of the variable then varialble is constant. If const is infront of the value then the value is constant. All Object no matter if it is list or a widget or any other object based on any other class are stored in memory by dart and what dart stores in the variables are the pointer at the objects in the memory i.e address of the object in memory. 
+    If we have a list and we may want to reuse the variable and assign a brand new value to it use var. 
+    If we never want to change the object make a value const.
+    final if the data will never change after it is initialized.
+
+26. The null value and null safety
+    null is the specila type of value which simply expresses that we don't want to have a value at ceratin point.
+    null safety to avoid the bug that we might have in the application if we try to work with the value where it might be null. So dart run extra check inside the code behind the scence to catch such scenarious. 
+    Null safety in flutter app is enabled by setting the environment in the pubspec.yaml file to value greater thatn 2.12. 
+    ? can be used while introducing variable or function parameters or object properties to tell dart that this variable may have main value type but also may be null also.
+
+27. splitting the app into widgets
+    It is always encourage to create more than less widgets. It is better for performance. 
+28. Getter and else if 
+    getter is a special type of property a mixture of property and method. It is a normal property but the value is calculated dynamically 
+    getter syntax:
+    String get resultPhrase{}
+    unlike function we don't need to pass a parentheses. always return something with getters.
